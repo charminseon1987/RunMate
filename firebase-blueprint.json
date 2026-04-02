@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with running and cooking preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "skillLevel": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "master"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "displayName"]
+    },
+    "Run": {
+      "title": "Running Record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "distance": { "type": "number" },
+        "duration": { "type": "number" },
+        "pace": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "distance", "duration", "timestamp"]
+    },
+    "Post": {
+      "title": "Community Post",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "content": { "type": "string" },
+        "likes": { "type": "array", "items": { "type": "string" } },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "content", "timestamp"]
+    },
+    "Recipe": {
+      "title": "Saved Recipe",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "ingredients": { "type": "array", "items": { "type": "string" } },
+        "instructions": { "type": "array", "items": { "type": "string" } },
+        "calories": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "instructions", "calories"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "User", "description": "User profiles" },
+    "/runs/{runId}": { "schema": "Run", "description": "Running records" },
+    "/posts/{postId}": { "schema": "Post", "description": "Community posts" },
+    "/savedRecipes/{recipeId}": { "schema": "Recipe", "description": "Saved recipes" }
+  }
+}

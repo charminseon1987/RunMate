@@ -1,0 +1,9 @@
+{
+  "name": "RunMate & Chef",
+  "description": "The ultimate lifestyle app: Track your runs, join the community, and scan your fridge for healthy AI-powered recipes.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
